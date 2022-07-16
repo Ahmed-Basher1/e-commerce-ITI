@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const {addressSchema} = require('./common')
+const { addressSchema } = require("./common");
 
 const userSchema = new mongoose.Schema({
   _id: {
@@ -24,12 +24,15 @@ const userSchema = new mongoose.Schema({
   address: {
     type: addressSchema,
     required: false,
+    default: {},
   },
   isVerified: {
     type: Boolean,
-    default: false
+    default: false,
   },
   phone: String,
+  resetToken: String,
+  resetTokenExpiration: Date,
 });
 
 module.exports = mongoose.model("user", userSchema);

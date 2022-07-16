@@ -5,17 +5,24 @@ const verificationSchema = mongoose.Schema(
     isVerified: {
       type: Boolean,
       default: false,
-      reauired: true,
+
     },
     adminId: {
       type: mongoose.Types.ObjectId,
       ref: "admin",
+
     },
+    // adminId: {
+    //   type: mongoose.Types.ObjectId,
+    //   ref: "admin",
+    // },
     comRegImgLink: String, // Commercial Register image link
     verifyTime: Date,
+    // required: true,
   },
   {
-    _id: false
+    _id: false,
+    timestamps: true,
   }
 );
 
@@ -39,10 +46,10 @@ const businessSchema = mongoose.Schema({
     required: true,
   },
   verification: {
+
     type: verificationSchema,
-    required: true,
   },
   description: String,
 });
 
-mongoose.model("business", businessSchema);
+module.exports = mongoose.model("business", businessSchema);
